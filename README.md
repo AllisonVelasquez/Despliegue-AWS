@@ -31,16 +31,36 @@ clic en ID instancia >> conectarse >> Cliente SSH
 Seguimos los pasos y ejecutamos el comando para conectarnos
 ssh -i "next-prod-app.pem" ec2-user@ec2-3-88-194-175.compute-1.amazonaws.com
 DENTRO (recordar que los comandos son similares a linux pero no iguales)
-Instalamos git 
+
+# Dentro del servidor
+## Instalamos git 
 ```
+sudo yum update -y
 sudo yum install git -y
 ```
 Verificamos la version con 
 ```
 git --version
 ```
+Creamos la carpeta donde estara nuestro repositorio y nos movemos a ella
+```
+mkdir <nombre> 
+```
 Clonamos el repositorio
+```
+git clone <url>
+```
 
-Instalamos docker
+## Instalamos docker
+```
+sudo yum install -y
+```
+Lo iniciamos y habilitamos
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo systemctl status docker
+```
+primero intentamos solo creando lso repos y el dockercompose
 
 
