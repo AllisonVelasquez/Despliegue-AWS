@@ -4,7 +4,7 @@ Para desplegar una instancia desde Amazon Web Services, primero debemos acceder 
 ```
 https://www.awsacademy.com/vforcesite/LMS_Login
 ```
-Y loguearnos con nuestro user y contraseña. (student login)
+Y loguearnos con nuestro user y contraseña. (student login)  
 Una vez dentro vamos a:
 ```
 Cursos >> Modulos >> Laboratorio de aprendizaje >> Iniciar el laboratorio
@@ -17,12 +17,12 @@ Nos aparecerá una pantalla de cargay veremos como el punto rojo cambia a color 
 ```
 Esperando...
 ```
-Hacemos clic en el nombre del laboratorio y accederemos a el.
+Hacemos clic en el nombre del laboratorio y accederemos a el.  
 Cuando hayamos ingresado, vamos a la barra de busqueda o a nuestros marcadores en este caso y ecribimos:
 ```
 EC2 o Servidores virtuales en la nube
 ```
-Nos cargará la pagina de inicio de EC2.
+Nos cargará la pagina de inicio de EC2.  
 Localizaremos lo siguiente:
 ```
 Instancias >> Lanzar instancia
@@ -46,8 +46,8 @@ Tambien debemos revisar esto:
 Asignar automaticamente la ip publica >> Habilitar
 Permitir trafico [ssh], [https] y [http] (elegimos)
 ```
-Despues de revisar todos los apartados, lanzamos la instancia.
-volvemos a instancias, refrescamos y veremos que nos aparece la que acabamos de crear y lanzar.
+Despues de revisar todos los apartados, lanzamos la instancia.  
+volvemos a instancias, refrescamos y veremos que nos aparece la que acabamos de crear y lanzar.  
 
 # Conectarse al servidor
 Una vez lanzada nuestra instancia debemos conectarnos a ella, para ello vamos a:
