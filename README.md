@@ -98,6 +98,19 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
+## Instalamos docker-compose
+```
+VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
+sudo curl -L "https://github.com/docker/compose/releases/download/$VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+Le damos permisos de ejecucion
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Y verificamos la version
+```
+docker-compose --version
+```
 Creamos/revisamos los dockerfile y creamos el docker-compose
 ## Instalamos nginx
 ```
