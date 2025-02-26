@@ -17,7 +17,7 @@ Nos aparecerá una pantalla de carga y veremos como el punto rojo cambia a color
 ```
 Esperando...
 ```
-Hacemos clic en el nombre del laboratorio y accederemos a el.  
+Cuando el punto cambie a color verde, hacemos clic en el nombre del laboratorio y accederemos a el.  
 Cuando hayamos ingresado, vamos a la barra de busqueda o a nuestros marcadores en este caso y ecribimos:
 ```
 EC2 o Servidores virtuales en la nube
@@ -64,7 +64,7 @@ Hacemos clic en el ID instancia >> conectarse >> Cliente SSH
 ```
 Seguimos los pasos y ejecutamos el comando para conectarnos
 ```
-ssh -i "next-prod-app.pem" ec2-user@ec2-3-88-194-175.compute-1.amazonaws.com
+ssh -i "next-prod-app.pem" [ec2-user@ec2-3-88-194-175.compute-1.amazonaws.com]
 ```
 
 # Dentro del servidor
@@ -82,13 +82,12 @@ git --version
 ```
 Creamos la carpeta donde estara nuestro repositorio y nos movemos a ella
 ```
-mkdir <nombre> 
+mkdir [nombre]
 ```
 Clonamos el repositorio
 ```
-git clone <url>
+git clone [url]
 ```
-
 ## Instalamos docker
 ```
 sudo yum install docker -y
@@ -99,8 +98,11 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
-Creamos los repositorios y el dockercompose  
-
+Creamos/revisamos los dockerfile y creamos el docker-compose
+## Instalamos nginx
+```
+sudo yum install nginx -y
+```
 ## Añadir Nginx a nuestros contenedores
 Primero debemos crear un directorio llamado nginx y dentro de el la carpeta certs y el archivo default.conf o nginx.conf
 ```
