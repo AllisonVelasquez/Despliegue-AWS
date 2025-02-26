@@ -175,12 +175,12 @@ nginx:
 ## Hacer dockerbuild
 Construimos los contenedores y quedan listos para levantarse
 ```
-docker compose build
+docker-compose build
 ```
 ## Levantar los contenedores
 Al levantarlos añadiendo el -d en el comando se dejan en segundo plano y podremos seguir utilizando la consola
 ```
-docker compose up -d
+docker-compose up -d
 ```
 ## Comprobar estado
 Podemos comprobar el estado de nuestro contenedores utilizando:
