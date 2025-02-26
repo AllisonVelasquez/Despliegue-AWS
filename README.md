@@ -191,5 +191,5 @@ docker logs [nombrecontenedor] para ver sus logs
 ```
 Tambien debemos acceder desde el navegador del localhost añadiendo el puerto expuesto 3000
 ```
-[ip servidor]:3000
+[ip servidor]
 ```
