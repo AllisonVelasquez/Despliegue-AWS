@@ -47,7 +47,7 @@ Asignar automaticamente la ip publica >> Habilitar
 Permitir trafico [ssh], [https] y [http] (elegimos)
 ```
 Despues de revisar todos los apartados, lanzamos la instancia.  
-volvemos a instancias, refrescamos y veremos que nos aparece la que acabamos de crear y lanzar.  
+Volvemos a instancias, refrescamos y veremos que nos aparece la que acabamos de crear y lanzar.  
 
 # Conectarse al servidor
 Una vez lanzada nuestra instancia debemos conectarnos a ella, para ello vamos a:
