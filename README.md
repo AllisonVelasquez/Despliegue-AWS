@@ -120,7 +120,7 @@ Revisamos que aparezcan dentro de la carpeta certs y proseguimos con el archivo 
 server {
   listen 80;
 
-  # Servir la aplicación React
+  # Servir React
   location / {
     #Esto redirige las solicitudes a la app React en ese contenedor y puerto
     proxy_pass http://react-app:3000;  # El nombre del servicio de React en docker-compose.yml
@@ -130,7 +130,7 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
   }
 
-  # Servir las rutas de la API de Node.js 
+  # Servir Node.js 
   location /tasks/ {
     proxy_pass http://api-node:5000;  # El nombre del servicio de Node.js en docker-compose.yml
     proxy_set_header Host $host;
@@ -140,7 +140,7 @@ server {
   }
 }
 ```
-Una vez creado todo este directorio volvemos al docker-compose del directorio raiz y lo modificamos añadiendole el servicio de nginx:
+Una vez creado todo este directorio volvemos al docker-compose del directorio raiz y lo modificamos añadiendole el servicio de nginx, quedando asi:
 ```
 nginx:
     image: nginx:alpine
