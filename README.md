@@ -91,7 +91,7 @@ git clone <url>
 
 ## Instalamos docker
 ```
-sudo yum install -y
+sudo yum install docker -y
 ```
 Lo iniciamos y habilitamos
 ```
@@ -99,6 +99,82 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
-Creamos los repositorios y el dockercompose
+Creamos los repositorios y el dockercompose  
 
+## Añadir Nginx a nuestros contenedores
+Primero debemos crear un directorio llamado nginx y dentro de el la carpeta certs y el archivo default.conf o nginx.conf
+```
+mkdir nginx (dentro de nuestra carpeta donde esta el docker-compose)
+```
+Para generar certificados que nos sirvende momento ejecutamos el siguiente codigo
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 
+  -keyout nginx/certs/selfsigned.key 
+  -out nginx/certs/selfsigned.crt 
+  -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=localhost"
+```
+Revisamos que aparezcan dentro de la carpeta certs y proseguimos con el archivo default.conf que debe contener lo siguiente
+```
+server {
+  listen 80;
 
+  # Servir la aplicación React
+  location / {
+    #Esto redirige las solicitudes a la app React en ese contenedor y puerto
+    proxy_pass http://react-app:3000;  # El nombre del servicio de React en docker-compose.yml
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+
+  # Servir las rutas de la API de Node.js 
+  location /tasks/ {
+    proxy_pass http://api-node:5000;  # El nombre del servicio de Node.js en docker-compose.yml
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+```
+Una vez creado todo este directorio volvemos al docker-compose del directorio raiz y lo modificamos añadiendole el servicio de nginx:
+```
+nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    volumes:
+    #Aqui deben copiarse tanto la configuracion como los certificados
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/certs:/etc/nginx/certs
+    ports:
+    #Exponemos los puertos para http y https
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - react-app
+      - api-node
+    networks:
+      - pro-app
+```
+## Hacer dockerbuild
+Construimos los contenedores y quedan listos para levantarse
+```
+docker compose build
+```
+## Levantar los contenedores
+Al levantarlos añadiendo el -d en el comando se dejan en segundo plano y podremos seguir utilizando la consola
+```
+docker compose up -d
+```
+## Comprobar estado
+Podemos comprobar el estado de nuestro contenedores utilizando:
+```
+docker ps (para ver los contenedores que tenemos activos)
+docker ps -a (pR ver todos los contenedores activos e inactivos)
+docker logs [nombrecontenedor] para ver sus logs
+```
+Tambien debemos acceder desde el navegador del localhost añadiendo el puerto expuesto 3000
+```
+localhost:3000
+```
