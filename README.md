@@ -13,7 +13,7 @@ Cuando el laboratorio se haya iniciado nos aparecerá el nombre AWS con un punto
 ```
 Start Lab
 ```
-Nos aparecerá una pantalla de cargay veremos como el punto rojo cambia a color amarillo y posteriormente a verde.
+Nos aparecerá una pantalla de carga y veremos como el punto rojo cambia a color amarillo y posteriormente a verde.
 ```
 Esperando...
 ```
